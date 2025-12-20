@@ -52,11 +52,11 @@ h1, h2, h3 {
     z-index: 0;
 }
 
-/* ===== Star shape ===== */
+/* ===== Star shape (doubled size) ===== */
 .star {
     position: absolute;
-    width: 14px;
-    height: 14px;
+    width: 28px;   /* was 14px */
+    height: 28px;  /* was 14px */
     background: rgba(255, 204, 102, 0.35);
     clip-path: polygon(
         50% 0%, 61% 35%, 98% 35%,
