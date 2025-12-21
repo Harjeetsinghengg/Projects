@@ -55,8 +55,8 @@ h1, h2, h3 {
 /* ===== Star shape (doubled size) ===== */
 .star {
     position: absolute;
-    width: 28px;   /* was 14px */
-    height: 28px;  /* was 14px */
+    width: 28px;
+    height: 28px;
     background: rgba(255, 204, 102, 0.35);
     clip-path: polygon(
         50% 0%, 61% 35%, 98% 35%,
@@ -97,12 +97,28 @@ st.markdown("""
 # ---------------- TITLE ----------------
 st.title("🚀 My AI Solutions Showcase")
 
-# ---------------- TOP 3 VIDEOS (3x1) ----------------
+# ---------------- VIDEO URLS (VALID RAW LINKS) ----------------
+VIDEO_TM = "https://raw.githubusercontent.com/Harjeetsinghengg/Projects/main/Template%20Matching.mp4"
+
+BASE = "https://raw.githubusercontent.com/Harjeetsinghengg/Projects/main/videos"
+
+VIDEO_2 = f"{BASE}/top2.mp4"
+VIDEO_3 = f"{BASE}/top3.mp4"
+
+# ---------------- TOP 3 VIDEOS ----------------
 col1, col2, col3 = st.columns(3)
 
-col1.video("https://github.com/Harjeetsinghengg/Projects/blob/main/Template%20Matching.mp4")
-col2.video("https://raw.githubusercontent.com/USERNAME/REPO/main/videos/top2.mp4")
-col3.video("https://raw.githubusercontent.com/USERNAME/REPO/main/videos/top3.mp4")
+with col1:
+    st.subheader("Template Matching")
+    st.video(VIDEO_TM)
+
+with col2:
+    st.subheader("Project Demo 2")
+    st.video(VIDEO_2)
+
+with col3:
+    st.subheader("Project Demo 3")
+    st.video(VIDEO_3)
 
 st.markdown("---")
 
@@ -110,14 +126,9 @@ st.markdown("---")
 st.sidebar.title("AI Projects")
 
 projects = {
-    "AI Vision Inspection": "https://raw.githubusercontent.com/USERNAME/REPO/main/videos/project1.mp4",
-    "PLC + AI Defect Detection": "https://raw.githubusercontent.com/USERNAME/REPO/main/videos/project2.mp4",
-    "NLP Answer Evaluation": "https://raw.githubusercontent.com/USERNAME/REPO/main/videos/project3.mp4",
-    "Student Paper Checker": "https://raw.githubusercontent.com/USERNAME/REPO/main/videos/project4.mp4",
-    "Industrial Vision ROI": "https://raw.githubusercontent.com/USERNAME/REPO/main/videos/project5.mp4",
-    "Streamlit AI Dashboard": "https://raw.githubusercontent.com/USERNAME/REPO/main/videos/project6.mp4",
-    "PDF AI Chatbot": "https://raw.githubusercontent.com/USERNAME/REPO/main/videos/project7.mp4",
-    "Quiz Grader AI": "https://raw.githubusercontent.com/USERNAME/REPO/main/videos/project8.mp4",
+    "AI Vision Inspection": VIDEO_TM,
+    "PLC + AI Defect Detection": VIDEO_2,
+    "Industrial Vision ROI": VIDEO_3,
 }
 
 if "selected_project" not in st.session_state:
@@ -133,10 +144,8 @@ selected = st.session_state.selected_project
 st.subheader(selected)
 st.video(projects[selected])
 
-st.write(
-    f"""
-    **Project Overview:**  
-    This AI solution demonstrates real-world implementation with
-    intelligent automation, modern UI, and industry-ready architecture.
-    """
-)
+st.write("""
+**Project Overview:**  
+This AI solution demonstrates real-world implementation with
+intelligent automation, modern UI, and industry-ready architecture.
+""")
