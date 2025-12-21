@@ -97,28 +97,35 @@ st.markdown("""
 # ---------------- TITLE ----------------
 st.title("🚀 My AI Solutions Showcase")
 
-# ---------------- VIDEO URLS (VALID RAW LINKS) ----------------
+# ---------------- VIDEO URLS ----------------
 VIDEO_TM = "https://raw.githubusercontent.com/Harjeetsinghengg/Projects/main/Template%20Matching.mp4"
-
 BASE = "https://raw.githubusercontent.com/Harjeetsinghengg/Projects/main/videos"
-
 VIDEO_2 = f"{BASE}/top2.mp4"
 VIDEO_3 = f"{BASE}/top3.mp4"
+
+# ---------------- FUNCTION TO DISPLAY HTML VIDEO ----------------
+def play_video(url, width="100%"):
+    st.markdown(f"""
+    <video width="{width}" autoplay loop muted controls>
+      <source src="{url}" type="video/mp4">
+      Your browser does not support the video tag.
+    </video>
+    """, unsafe_allow_html=True)
 
 # ---------------- TOP 3 VIDEOS ----------------
 col1, col2, col3 = st.columns(3)
 
 with col1:
     st.subheader("Template Matching")
-    st.video(VIDEO_TM)
+    play_video(VIDEO_TM)
 
 with col2:
     st.subheader("Project Demo 2")
-    st.video(VIDEO_2)
+    play_video(VIDEO_2)
 
 with col3:
     st.subheader("Project Demo 3")
-    st.video(VIDEO_3)
+    play_video(VIDEO_3)
 
 st.markdown("---")
 
@@ -142,7 +149,7 @@ for project in projects:
 selected = st.session_state.selected_project
 
 st.subheader(selected)
-st.video(projects[selected])
+play_video(projects[selected])
 
 st.write("""
 **Project Overview:**  
