@@ -133,9 +133,9 @@ st.markdown("---")
 st.sidebar.title("AI Projects")
 
 projects = {
-    "AI Vision Inspection": VIDEO_TM,
+    "AI Vision Inspection     ": VIDEO_TM,
     "PLC + AI Defect Detection": VIDEO_2,
-    "Industrial Vision ROI": VIDEO_3,
+    "Industrial Vision ROI    ": VIDEO_3,
 }
 
 if "selected_project" not in st.session_state:
