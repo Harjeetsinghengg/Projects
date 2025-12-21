@@ -99,8 +99,8 @@ st.title("🚀 My AI Solutions Showcase")
 
 # ---------------- VIDEO URLS ----------------
 VIDEO_TM = "https://raw.githubusercontent.com/Harjeetsinghengg/Projects/main/Template%20Matching.mp4"
+VIDEO_OPC = "https://raw.githubusercontent.com/Harjeetsinghengg/Projects/main/OPC.mp4"
 BASE = "https://raw.githubusercontent.com/Harjeetsinghengg/Projects/main/videos"
-VIDEO_2 = f"{BASE}/top2.mp4"
 VIDEO_3 = f"{BASE}/top3.mp4"
 
 # ---------------- FUNCTION TO DISPLAY HTML VIDEO ----------------
@@ -120,8 +120,8 @@ with col1:
     play_video(VIDEO_TM)
 
 with col2:
-    st.subheader("Project Demo 2")
-    play_video(VIDEO_2)
+    st.subheader("OPC Demo Video")
+    play_video(VIDEO_OPC)
 
 with col3:
     st.subheader("Project Demo 3")
@@ -134,7 +134,7 @@ st.sidebar.title("AI Projects")
 
 projects = {
     "AI Vision Inspection     ": VIDEO_TM,
-    "PLC + AI Defect Detection": VIDEO_2,
+    "PLC + AI Defect Detection": VIDEO_OPC,
     "Industrial Vision ROI    ": VIDEO_3,
 }
 
@@ -156,3 +156,4 @@ st.write("""
 This AI solution demonstrates real-world implementation with
 intelligent automation, modern UI, and industry-ready architecture.
 """)
+s
