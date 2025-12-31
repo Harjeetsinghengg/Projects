@@ -8,7 +8,11 @@ st.set_page_config(
 
 # ================= CSS STYLING =================
 
-#/* ===== REMOVE TOP SPACE ===== */
+
+
+st.markdown("""
+<style>
+/* ===== REMOVE TOP SPACE ===== */
 header[data-testid="stHeader"] {
     display: none;
 }
@@ -20,10 +24,6 @@ header[data-testid="stHeader"] {
 .block-container {
     padding-top: 1rem !important;
 }
-
-st.markdown("""
-<style>
-
 /* ===== Base background ===== */
 body {
     background: linear-gradient(135deg, #FF9933, #001F54);
