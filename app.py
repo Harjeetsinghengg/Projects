@@ -1,16 +1,16 @@
 import streamlit as st
 
-# ---------------- PAGE CONFIG ----------------
+# ================= PAGE CONFIG =================
 st.set_page_config(
     page_title="AI Solutions Showcase",
     layout="wide"
 )
 
-# ---------------- CSS (THEME + STARS + BUTTON SIZE) ----------------
+# ================= CSS STYLING =================
 st.markdown("""
 <style>
 
-/* ===== Base gradient ===== */
+/* ===== Base background ===== */
 body {
     background: linear-gradient(135deg, #FF9933, #001F54);
     color: white;
@@ -27,7 +27,7 @@ h1, h2, h3 {
     color: #FFD700;
 }
 
-/* ===== Sidebar Buttons (FIXED SIZE) ===== */
+/* ===== Sidebar Buttons ===== */
 .stButton>button {
     background-color: #FFD700;
     color: #001F54;
@@ -44,7 +44,7 @@ h1, h2, h3 {
     color: white;
 }
 
-/* ===== Floating stars container (RIGHT SIDE ONLY) ===== */
+/* ===== Floating Stars ===== */
 .star-layer {
     position: fixed;
     top: 0;
@@ -55,7 +55,6 @@ h1, h2, h3 {
     z-index: 0;
 }
 
-/* ===== Star shape ===== */
 .star {
     position: absolute;
     width: 28px;
@@ -77,7 +76,7 @@ h1, h2, h3 {
 </style>
 """, unsafe_allow_html=True)
 
-# ---------------- STAR LAYER ----------------
+# ================= STAR EFFECT =================
 st.markdown("""
 <div class="star-layer">
     <div class="star" style="left:10%; animation-delay:0s;"></div>
@@ -89,18 +88,18 @@ st.markdown("""
 </div>
 """, unsafe_allow_html=True)
 
-# ---------------- TITLE ----------------
-st.title(" PLC + AI Solutions Showcase 🚀")
+# ================= TITLE =================
+st.title("🚀 PLC + AI Solutions Showcase")
 
-# ---------------- VIDEO URLS ----------------
+# ================= VIDEO SOURCES =================
 BASE = "https://raw.githubusercontent.com/Harjeetsinghengg/Projects/main"
 
 VIDEO_1 = f"{BASE}/protocol.mp4"
 VIDEO_2 = f"{BASE}/OPC.mp4"
-VIDEO_3 = f"{BASE}/Template Matching.mp4"
+VIDEO_3 = f"{BASE}/Template_Matching.mp4"
 VIDEO_4 = f"{BASE}/video4.mp4"
 
-# ---------------- VIDEO PLAYER ----------------
+# ================= VIDEO PLAYER FUNCTION =================
 def play_video(url):
     st.markdown(f"""
     <video width="100%" autoplay loop muted controls>
@@ -109,7 +108,7 @@ def play_video(url):
     </video>
     """, unsafe_allow_html=True)
 
-# ---------------- TOP VIDEOS GRID ----------------
+# ================= TOP 3 FIXED VIDEOS =================
 col1, col2, col3 = st.columns(3)
 
 with col1:
@@ -126,33 +125,65 @@ with col3:
 
 st.markdown("---")
 
-# ---------------- SIDEBAR BUTTONS ----------------
+# ================= SIDEBAR =================
 st.sidebar.title("AI Projects")
 
 projects = {
-    "AI Vision Inspection": VIDEO_1,
-    "PLC + AI Integration": VIDEO_2,
-    "Industrial Vision ROI": VIDEO_3,
-    "Smart Factory AI": VIDEO_4,
-    "Coming Soon 🚧": VIDEO_1,
-    "Future Innovation 🚀": VIDEO_2
+    "AI Vision Inspection": {
+        "type": "video",
+        "source": VIDEO_1
+    },
+    "PLC + AI Integration": {
+        "type": "video",
+        "source": VIDEO_2
+    },
+    "Industrial Vision ROI": {
+        "type": "video",
+        "source": VIDEO_3
+    },
+    "Smart Factory AI": {
+        "type": "video",
+        "source": VIDEO_4
+    },
+    "AI Documentation (PDF)": {
+        "type": "pdf",
+        "source": "https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf"
+    }
 }
 
-# Default selection
+# Session state
 if "selected_project" not in st.session_state:
     st.session_state.selected_project = list(projects.keys())[0]
 
-# Fixed-size buttons
+# Sidebar buttons
 for project in projects:
-    if st.sidebar.button(project):
+    if st.sidebar.button(project, key=project):
         st.session_state.selected_project = project
 
-# ---------------- MAIN DISPLAY ----------------
-st.subheader(st.session_state.selected_project)
-play_video(projects[st.session_state.selected_project])
+# ================= DYNAMIC DISPLAY PANEL =================
+st.markdown("## 🔍 Project Viewer")
 
-st.write("""
-**Project Overview:**  
-This AI solution demonstrates real-world industrial automation using  
-computer vision, PLC integration, and intelligent analytics.
+selected = projects[st.session_state.selected_project]
+
+if selected["type"] == "video":
+    play_video(selected["source"])
+
+elif selected["type"] == "pdf":
+    st.markdown(
+        f"""
+        <iframe src="{selected['source']}"
+                width="100%"
+                height="650px"
+                style="border:none;">
+        </iframe>
+        """,
+        unsafe_allow_html=True
+    )
+
+st.markdown(f"""
+### {st.session_state.selected_project}
+
+**Description:**  
+This section dynamically updates based on the selected project  
+while keeping the top showcase videos unchanged.
 """)
