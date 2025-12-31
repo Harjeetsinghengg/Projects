@@ -6,7 +6,7 @@ st.set_page_config(
     layout="wide"
 )
 
-# ---------------- CSS (THEME + STARS) ----------------
+# ---------------- CSS (THEME + STARS + BUTTON SIZE) ----------------
 st.markdown("""
 <style>
 
@@ -27,15 +27,18 @@ h1, h2, h3 {
     color: #FFD700;
 }
 
-/* ===== Buttons ===== */
+/* ===== Sidebar Buttons (FIXED SIZE) ===== */
 .stButton>button {
     background-color: #FFD700;
     color: #001F54;
     width: 100%;
-    margin-bottom: 0.6rem;
-    border-radius: 6px;
+    height: 55px;
+    margin-bottom: 10px;
+    border-radius: 8px;
     font-weight: 600;
+    font-size: 15px;
 }
+
 .stButton>button:hover {
     background-color: #FFA500;
     color: white;
@@ -52,7 +55,7 @@ h1, h2, h3 {
     z-index: 0;
 }
 
-/* ===== Star shape (doubled size) ===== */
+/* ===== Star shape ===== */
 .star {
     position: absolute;
     width: 28px;
@@ -66,19 +69,11 @@ h1, h2, h3 {
     animation: floatStar 20s linear infinite;
 }
 
-/* ===== Animation ===== */
 @keyframes floatStar {
-    0% {
-        transform: translateY(110vh) rotate(0deg);
-        opacity: 0;
-    }
+    0% { transform: translateY(110vh) rotate(0deg); opacity: 0; }
     20% { opacity: 0.6; }
-    100% {
-        transform: translateY(-10vh) rotate(360deg);
-        opacity: 0;
-    }
+    100% { transform: translateY(-10vh) rotate(360deg); opacity: 0; }
 }
-
 </style>
 """, unsafe_allow_html=True)
 
@@ -86,11 +81,11 @@ h1, h2, h3 {
 st.markdown("""
 <div class="star-layer">
     <div class="star" style="left:10%; animation-delay:0s;"></div>
-    <div class="star" style="left:20%; animation-delay:4s;"></div>
-    <div class="star" style="left:35%; animation-delay:8s;"></div>
-    <div class="star" style="left:50%; animation-delay:12s;"></div>
-    <div class="star" style="left:65%; animation-delay:16s;"></div>
-    <div class="star" style="left:80%; animation-delay:20s;"></div>
+    <div class="star" style="left:25%; animation-delay:4s;"></div>
+    <div class="star" style="left:40%; animation-delay:8s;"></div>
+    <div class="star" style="left:55%; animation-delay:12s;"></div>
+    <div class="star" style="left:70%; animation-delay:16s;"></div>
+    <div class="star" style="left:85%; animation-delay:20s;"></div>
 </div>
 """, unsafe_allow_html=True)
 
@@ -98,62 +93,66 @@ st.markdown("""
 st.title("🚀 My AI Solutions Showcase")
 
 # ---------------- VIDEO URLS ----------------
-VIDEO_TM = "https://raw.githubusercontent.com/Harjeetsinghengg/Projects/main/Template%20Matching.mp4"
-VIDEO_OPC = "https://raw.githubusercontent.com/Harjeetsinghengg/Projects/main/OPC.mp4"
 BASE = "https://raw.githubusercontent.com/Harjeetsinghengg/Projects/main/videos"
-VIDEO_3 = f"{BASE}/top3.mp4"
 
-# ---------------- FUNCTION TO DISPLAY HTML VIDEO ----------------
-def play_video(url, width="100%"):
+VIDEO_1 = f"{BASE}/TemplateMatching.mp4"
+VIDEO_2 = f"{BASE}/OPC.mp4"
+VIDEO_3 = f"{BASE}/top3.mp4"
+VIDEO_4 = f"{BASE}/video4.mp4"
+
+# ---------------- VIDEO PLAYER ----------------
+def play_video(url):
     st.markdown(f"""
-    <video width="{width}" autoplay loop muted controls>
-      <source src="{url}" type="video/mp4">
-      Your browser does not support the video tag.
+    <video width="100%" autoplay loop muted controls>
+        <source src="{url}" type="video/mp4">
+        Your browser does not support the video tag.
     </video>
     """, unsafe_allow_html=True)
 
-# ---------------- TOP 3 VIDEOS ----------------
+# ---------------- TOP VIDEOS GRID ----------------
 col1, col2, col3 = st.columns(3)
 
 with col1:
     st.subheader("Template Matching")
-    play_video(VIDEO_TM)
+    play_video(VIDEO_1)
 
 with col2:
-    st.subheader("OPC Demo Video")
-    play_video(VIDEO_OPC)
+    st.subheader("OPC Integration")
+    play_video(VIDEO_2)
 
 with col3:
-    st.subheader("Project Demo 3")
+    st.subheader("Vision System")
     play_video(VIDEO_3)
 
 st.markdown("---")
 
-# ---------------- SIDEBAR PROJECT BUTTONS ----------------
+# ---------------- SIDEBAR BUTTONS ----------------
 st.sidebar.title("AI Projects")
 
 projects = {
-    "AI Vision Inspection     ": VIDEO_TM,
-    "PLC + AI Defect Detection": VIDEO_OPC,
-    "Industrial Vision ROI    ": VIDEO_3,
+    "AI Vision Inspection": VIDEO_1,
+    "PLC + AI Integration": VIDEO_2,
+    "Industrial Vision ROI": VIDEO_3,
+    "Smart Factory AI": VIDEO_4,
+    "Coming Soon 🚧": VIDEO_1,
+    "Future Innovation 🚀": VIDEO_2
 }
 
+# Default selection
 if "selected_project" not in st.session_state:
     st.session_state.selected_project = list(projects.keys())[0]
 
+# Fixed-size buttons
 for project in projects:
     if st.sidebar.button(project):
         st.session_state.selected_project = project
 
-# ---------------- MAIN CONTENT ----------------
-selected = st.session_state.selected_project
-
-st.subheader(selected)
-play_video(projects[selected])
+# ---------------- MAIN DISPLAY ----------------
+st.subheader(st.session_state.selected_project)
+play_video(projects[st.session_state.selected_project])
 
 st.write("""
 **Project Overview:**  
-This AI solution demonstrates real-world implementation with
-intelligent automation, modern UI, and industry-ready architecture.
+This AI solution demonstrates real-world industrial automation using  
+computer vision, PLC integration, and intelligent analytics.
 """)
-s
