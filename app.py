@@ -151,10 +151,10 @@ st.markdown("---")
 st.sidebar.title("AI Projects")
 
 projects = {
-    "Industrial Communication": ("video", VIDEO_1),
+    "Industrial Protocol": ("video", VIDEO_1),
     "PLC + OPC Integration": ("video", VIDEO_2),
-    "Industrial Vision System": ("video", VIDEO_3),
-    "Dashboard Grafana Screen": ("pdf", PDF_1),
+    "Industrial Vision": ("video", VIDEO_3),
+    "Dashboard Grafana": ("pdf", PDF_1),
     "Smart  Factory  AI ML": ("video", VIDEO_4),
 }
 
