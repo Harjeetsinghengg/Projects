@@ -28,16 +28,32 @@ h1, h2, h3 {
 }
 
 /* ===== Sidebar Buttons ===== */
-.stButton>button {
+/* ===== Sidebar Buttons (FIXED SIZE & ALIGNMENT) ===== */
+.stButton > button {
     background-color: #FFD700;
     color: #001F54;
     width: 100%;
     height: 55px;
     margin-bottom: 10px;
     border-radius: 8px;
+
     font-weight: 600;
-    font-size: 15px;
+    font-size: 14px;
+
+    white-space: nowrap;        /* 🚀 prevents wrapping */
+    overflow: hidden;
+    text-overflow: ellipsis;
+
+    display: flex;
+    align-items: center;        /* vertical centering */
+    justify-content: center;    /* horizontal centering */
 }
+
+.stButton > button:hover {
+    background-color: #FFA500;
+    color: white;
+}
+
 
 .stButton>button:hover {
     background-color: #FFA500;
