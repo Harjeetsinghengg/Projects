@@ -7,6 +7,20 @@ st.set_page_config(
 )
 
 # ================= CSS STYLING =================
+
+#/* ===== REMOVE TOP SPACE ===== */
+header[data-testid="stHeader"] {
+    display: none;
+}
+
+.stApp {
+    padding-top: 0rem !important;
+}
+
+.block-container {
+    padding-top: 1rem !important;
+}
+
 st.markdown("""
 <style>
 
