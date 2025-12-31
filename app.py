@@ -80,7 +80,7 @@ projects = {
     "PLC + AI Integration": ("video", VIDEO_2),
     "Industrial Vision ROI": ("video", VIDEO_3),
     "Documentation PDF": ("pdf", PDF_1),
-    "Smart Factory AI": ("video", VIDEO_4),
+    "Smart Factory AI..": ("video", VIDEO_4),
 }
 
 # default selection
