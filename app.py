@@ -79,7 +79,6 @@ projects = {
     "AI Vision Inspection": ("video", VIDEO_1),
     "PLC + AI Integration": ("video", VIDEO_2),
     "Industrial Vision ROI": ("video", VIDEO_3),
-    "Documentation PDF": ("pdf", PDF_1),
     "Smart Factory AI": ("video", VIDEO_4),
 }
 
