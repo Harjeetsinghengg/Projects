@@ -7,7 +7,7 @@ st.set_page_config(
     layout="wide"
 )
 
-# ---------------- CSS (THEME + STARS + BUTTON SIZE) ----------------
+# ---------------- CSS (THEME + STARS + BUTTON SIZE) ----------------l
 st.markdown("""
 <style>
 
