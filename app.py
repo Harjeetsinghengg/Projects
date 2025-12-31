@@ -13,29 +13,47 @@ st.set_page_config(
 # -------------------------------------------------
 st.markdown("""
 <style>
+
+/* ================= GENERAL ================= */
 body {
     background: linear-gradient(135deg, #FF9933, #001F54);
     color: white;
 }
 
+/* ================= SIDEBAR ================= */
 [data-testid="stSidebar"] {
     background: linear-gradient(180deg, #FF9933, #001F54);
     padding-top: 2rem;
+    width: 260px !important;
 }
 
+/* ================= HEADINGS ================= */
 h1, h2, h3 {
     color: #FFD700;
 }
 
+/* ================= SIDEBAR BUTTONS ================= */
 .stButton > button {
+    width: 100% !important;
+    height: 56px !important;
+
     background-color: #FFD700;
     color: #001F54;
-    width: 100%;
-    height: 55px;
-    margin-bottom: 10px;
+
     border-radius: 8px;
     font-weight: 600;
     font-size: 15px;
+
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+
+    margin-bottom: 12px;
+    box-sizing: border-box;
 }
 
 .stButton > button:hover {
@@ -43,7 +61,7 @@ h1, h2, h3 {
     color: white;
 }
 
-/* Floating stars */
+/* ================= FLOATING STARS ================= */
 .star-layer {
     position: fixed;
     top: 0;
@@ -76,7 +94,7 @@ h1, h2, h3 {
 """, unsafe_allow_html=True)
 
 # -------------------------------------------------
-# STAR BACKGROUND
+# STARS
 # -------------------------------------------------
 st.markdown("""
 <div class="star-layer">
@@ -95,7 +113,7 @@ st.markdown("""
 st.title("🚀 PLC + AI Solutions Showcase")
 
 # -------------------------------------------------
-# FILE LINKS
+# FILE PATHS
 # -------------------------------------------------
 BASE = "https://raw.githubusercontent.com/Harjeetsinghengg/Projects/main"
 
@@ -103,8 +121,7 @@ VIDEO_1 = f"{BASE}/protocol.mp4"
 VIDEO_2 = f"{BASE}/OPC.mp4"
 VIDEO_3 = f"{BASE}/Template%20Matching.mp4"
 VIDEO_4 = f"{BASE}/video4.mp4"
-
-PDF_1 = f"{BASE}/Documents/Dashboard.pdf"
+PDF_1   = f"{BASE}/Documents/Dashboard.pdf"
 
 # -------------------------------------------------
 # HELPERS
@@ -120,9 +137,7 @@ def play_video(url, height=260):
 def show_pdf(url, height=800):
     viewer = f"https://docs.google.com/gview?url={url}&embedded=true"
     st.markdown(
-        f"""
-        <iframe src="{viewer}" width="100%" height="{height}" style="border:none;"></iframe>
-        """,
+        f"""<iframe src="{viewer}" width="100%" height="{height}" style="border:none;"></iframe>""",
         unsafe_allow_html=True
     )
 
@@ -146,7 +161,7 @@ with col3:
 st.markdown("---")
 
 # -------------------------------------------------
-# SIDEBAR
+# SIDEBAR BUTTONS
 # -------------------------------------------------
 st.sidebar.title("AI Projects")
 
@@ -155,7 +170,7 @@ projects = {
     "PLC + OPC Integration": ("video", VIDEO_2),
     "Industrial Vision": ("video", VIDEO_3),
     "Dashboard Grafana": ("pdf", PDF_1),
-    "Smart  Factory  AI ML": ("video", VIDEO_4),
+    "Smart Factory AI / ML": ("video", VIDEO_4),
 }
 
 if "selected_project" not in st.session_state:
@@ -166,19 +181,19 @@ for name in projects:
         st.session_state.selected_project = name
 
 # -------------------------------------------------
-# MAIN DISPLAY (BIG PANEL)
+# MAIN CONTENT
 # -------------------------------------------------
 proj_name = st.session_state.selected_project
-proj_type, proj_source = projects[proj_name]
+proj_type, proj_src = projects[proj_name]
 
 st.subheader(proj_name)
 
 if proj_type == "video":
-    play_video(proj_source, height=420)
+    play_video(proj_src, height=420)
 else:
-    show_pdf(proj_source, height=850)
+    show_pdf(proj_src, height=850)
 
 st.write("""
 **Project Overview:**  
-This section dynamically updates based on the selected project while keeping the top three showcase videos fixed.
+This section dynamically updates based on the selected project while keeping the top three showcase videos unchanged.
 """)
