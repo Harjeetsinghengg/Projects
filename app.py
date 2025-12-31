@@ -27,35 +27,29 @@ h1, h2, h3 {
     color: #FFD700;
 }
 
-/* ===== Sidebar Buttons ===== */
-/* ===== Sidebar Buttons (FIXED SIZE & ALIGNMENT) ===== */
+/* ===== FIXED SIZE SIDEBAR BUTTONS ===== */
 .stButton > button {
-    background-color: #FFD700;
-    color: #001F54;
     width: 100%;
     height: 55px;
-    margin-bottom: 10px;
-    border-radius: 8px;
+    background-color: #FFD700;
+    color: #001F54;
 
-    font-weight: 600;
     font-size: 14px;
+    font-weight: 600;
 
-    white-space: nowrap;        /* 🚀 prevents wrapping */
+    border-radius: 8px;
+    margin-bottom: 10px;
+
+    white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
 
     display: flex;
-    align-items: center;        /* vertical centering */
-    justify-content: center;    /* horizontal centering */
+    align-items: center;
+    justify-content: center;
 }
 
 .stButton > button:hover {
-    background-color: #FFA500;
-    color: white;
-}
-
-
-.stButton>button:hover {
     background-color: #FFA500;
     color: white;
 }
@@ -107,7 +101,7 @@ st.markdown("""
 # ================= TITLE =================
 st.title("🚀 PLC + AI Solutions Showcase")
 
-# ================= VIDEO SOURCES =================
+# ================= FILE SOURCES =================
 BASE = "https://raw.githubusercontent.com/Harjeetsinghengg/Projects/main"
 
 VIDEO_1 = f"{BASE}/protocol.mp4"
@@ -115,14 +109,12 @@ VIDEO_2 = f"{BASE}/OPC.mp4"
 VIDEO_3 = f"{BASE}/Template_Matching.mp4"
 VIDEO_4 = f"{BASE}/video4.mp4"
 
-# ================= VIDEO PLAYER FUNCTION =================
+PDF_1 = "https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf"
+PDF_2 = "https://www.orimi.com/pdf-test.pdf"
+
+# ================= VIDEO PLAYER =================
 def play_video(url):
-    st.markdown(f"""
-    <video width="100%" autoplay loop muted controls>
-        <source src="{url}" type="video/mp4">
-        Your browser does not support the video tag.
-    </video>
-    """, unsafe_allow_html=True)
+    st.video(url)
 
 # ================= TOP 3 FIXED VIDEOS =================
 col1, col2, col3 = st.columns(3)
@@ -145,26 +137,12 @@ st.markdown("---")
 st.sidebar.title("AI Projects")
 
 projects = {
-    "AI Vision Inspection": {
-        "type": "video",
-        "source": VIDEO_1
-    },
-    "PLC + AI Integration": {
-        "type": "video",
-        "source": VIDEO_2
-    },
-    "Industrial Vision ROI": {
-        "type": "video",
-        "source": VIDEO_3
-    },
-    "Smart Factory AI": {
-        "type": "video",
-        "source": VIDEO_4
-    },
-    "AI Documentation (PDF)": {
-        "type": "pdf",
-        "source": "https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf"
-    }
+    "AI Vision Inspection": {"type": "video", "src": VIDEO_1},
+    "PLC + AI Integration": {"type": "video", "src": VIDEO_2},
+    "Industrial Vision ROI": {"type": "video", "src": VIDEO_3},
+    "Smart Factory AI": {"type": "video", "src": VIDEO_4},
+    "AI Documentation": {"type": "pdf", "src": PDF_1},
+    "System Architecture": {"type": "pdf", "src": PDF_2},
 }
 
 # Session state
@@ -173,24 +151,21 @@ if "selected_project" not in st.session_state:
 
 # Sidebar buttons
 for project in projects:
-    if st.sidebar.button(project, key=project):
+    if st.sidebar.button(project, key=project, use_container_width=True):
         st.session_state.selected_project = project
 
-# ================= DYNAMIC DISPLAY PANEL =================
+# ================= MAIN DISPLAY =================
 st.markdown("## 🔍 Project Viewer")
 
 selected = projects[st.session_state.selected_project]
 
 if selected["type"] == "video":
-    play_video(
-        selected["source"],
-        key=st.session_state.selected_project
-    )
+    play_video(selected["src"])
 
 elif selected["type"] == "pdf":
     st.markdown(
         f"""
-        <iframe src="{selected['source']}"
+        <iframe src="{selected['src']}"
                 width="100%"
                 height="650px"
                 style="border:none;">
@@ -203,6 +178,5 @@ st.markdown(f"""
 ### {st.session_state.selected_project}
 
 **Description:**  
-This section dynamically updates based on the selected project  
-while keeping the top showcase videos unchanged.
+This content updates dynamically when you select a project from the left panel.
 """)
