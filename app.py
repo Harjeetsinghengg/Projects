@@ -90,7 +90,7 @@ st.markdown("""
 """, unsafe_allow_html=True)
 
 # ---------------- TITLE ----------------
-st.title("🚀 My AI Solutions Showcase")
+st.title(" PLC + AI Solutions Showcase 🚀")
 
 # ---------------- VIDEO URLS ----------------
 BASE = "https://raw.githubusercontent.com/Harjeetsinghengg/Projects/main"
@@ -113,7 +113,7 @@ def play_video(url):
 col1, col2, col3 = st.columns(3)
 
 with col1:
-    st.subheader("Industrial Com Protocols")
+    st.subheader("Communication Protocols")
     play_video(VIDEO_1)
 
 with col2:
