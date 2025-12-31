@@ -95,9 +95,9 @@ st.title("🚀 My AI Solutions Showcase")
 # ---------------- VIDEO URLS ----------------
 BASE = "https://raw.githubusercontent.com/Harjeetsinghengg/Projects/main"
 
-VIDEO_1 = f"{BASE}/TemplateMatching.mp4"
+VIDEO_1 = f"{BASE}/protocol.mp4"
 VIDEO_2 = f"{BASE}/OPC.mp4"
-VIDEO_3 = f"{BASE}/protocol.mp4"
+VIDEO_3 = f"{BASE}/Template Matching.mp4"
 VIDEO_4 = f"{BASE}/video4.mp4"
 
 # ---------------- VIDEO PLAYER ----------------
@@ -113,7 +113,7 @@ def play_video(url):
 col1, col2, col3 = st.columns(3)
 
 with col1:
-    st.subheader("Template Matching")
+    st.subheader("Industrial Com Protocols")
     play_video(VIDEO_1)
 
 with col2:
