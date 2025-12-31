@@ -39,7 +39,7 @@ VIDEO_1 = f"{BASE}/protocol.mp4"
 VIDEO_2 = f"{BASE}/OPC.mp4"
 VIDEO_3 = f"{BASE}/Template%20Matching.mp4"  # space replaced with %20
 VIDEO_4 = f"{BASE}/video4.mp4"
-PDF_1   = f"{BASE}/documentation.pdf"  # ensure this exists
+PDF_1   = f"{BASE}/documents/Dashboard.pdf"  # ensure this exists
 
 # ---------------- HELPERS ----------------
 def play_video(url: str, height: int = 200):
