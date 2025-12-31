@@ -37,8 +37,8 @@ BASE = "https://raw.githubusercontent.com/Harjeetsinghengg/Projects/main"
 
 VIDEO_1 = f"{BASE}/protocol.mp4"
 VIDEO_2 = f"{BASE}/OPC.mp4"
-VIDEO_3 = f"{BASE}/Template%20Matching.mp4"
-VIDEO_4 = f"{BASE}/video4.mp4"      # optional extra video
+VIDEO_3 = f"{BASE}/Template%20Matching.mp4"  # space replaced with %20
+VIDEO_4 = f"{BASE}/video4.mp4"
 PDF_1   = f"{BASE}/documentation.pdf"  # ensure this exists
 
 # ---------------- HELPERS ----------------
@@ -79,6 +79,7 @@ projects = {
     "AI Vision Inspection": ("video", VIDEO_1),
     "PLC + AI Integration": ("video", VIDEO_2),
     "Industrial Vision ROI": ("video", VIDEO_3),
+    "Documentation PDF": ("pdf", PDF_1),
     "Smart Factory AI": ("video", VIDEO_4),
 }
 
@@ -91,7 +92,7 @@ for project_name in projects.keys():
     if st.sidebar.button(project_name):
         st.session_state.selected_project = project_name
 
-# ---------------- MAIN DISPLAY (Below Top Videos) ----------------
+# ---------------- MAIN DISPLAY (Below Top Row) ----------------
 proj_name = st.session_state.selected_project
 proj_type, proj_source = projects[proj_name]
 
@@ -99,7 +100,7 @@ st.subheader(proj_name)
 
 if proj_type == "video":
     play_video(proj_source, height=400)  # bigger display
-else:
+else:  # PDF
     show_pdf(proj_source, height=800)
 
 st.write("""
