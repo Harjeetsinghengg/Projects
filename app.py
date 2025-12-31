@@ -93,11 +93,11 @@ st.markdown("""
 st.title("🚀 My AI Solutions Showcase")
 
 # ---------------- VIDEO URLS ----------------
-BASE = "https://raw.githubusercontent.com/Harjeetsinghengg/Projects/main/videos"
+BASE = "https://raw.githubusercontent.com/Harjeetsinghengg/Projects/main"
 
 VIDEO_1 = f"{BASE}/TemplateMatching.mp4"
 VIDEO_2 = f"{BASE}/OPC.mp4"
-VIDEO_3 = f"{BASE}/top3.mp4"
+VIDEO_3 = f"{BASE}/protocol.mp4"
 VIDEO_4 = f"{BASE}/video4.mp4"
 
 # ---------------- VIDEO PLAYER ----------------
