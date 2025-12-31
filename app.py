@@ -166,7 +166,10 @@ st.markdown("## 🔍 Project Viewer")
 selected = projects[st.session_state.selected_project]
 
 if selected["type"] == "video":
-    play_video(selected["source"])
+    play_video(
+        selected["source"],
+        key=st.session_state.selected_project
+    )
 
 elif selected["type"] == "pdf":
     st.markdown(
