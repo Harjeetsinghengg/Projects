@@ -155,7 +155,7 @@ projects = {
     "PLC + AI Integration": ("video", VIDEO_2),
     "Industrial Vision ROI": ("video", VIDEO_3),
     "Documentation PDF": ("pdf", PDF_1),
-    "Smart  Factory  AI": ("video", VIDEO_4),
+    "Smart  Factory  AI ML": ("video", VIDEO_4),
 }
 
 if "selected_project" not in st.session_state:
