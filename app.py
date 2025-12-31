@@ -28,7 +28,7 @@ h1, h2, h3 {
 }
 
 /* ===== Sidebar Buttons (FIXED SIZE) ===== */
-.stButton>button {
+.stButton > button {
     background-color: #FFD700;
     color: #001F54;
     width: 100%;
@@ -39,7 +39,7 @@ h1, h2, h3 {
     font-size: 15px;
 }
 
-.stButton>button:hover {
+.stButton > button:hover {
     background-color: #FFA500;
     color: white;
 }
@@ -92,25 +92,33 @@ st.markdown("""
 # ---------------- TITLE ----------------
 st.title(" PLC + AI Solutions Showcase 🚀")
 
-# ---------------- VIDEO URLS ----------------
+# ---------------- VIDEO & PDF URLS ----------------
 BASE = "https://raw.githubusercontent.com/Harjeetsinghengg/Projects/main"
 
 VIDEO_1 = f"{BASE}/protocol.mp4"
 VIDEO_2 = f"{BASE}/OPC.mp4"
 VIDEO_3 = f"{BASE}/Template Matching.mp4"
-VIDEO_4 = f"{BASE}/video4.mp4"
+VIDEO_4 = f"{BASE}/video4.mp4"      # still a video if you want it
+PDF_1   = f"{BASE}/documentation.pdf"  # <- put your real PDF path here
 
-# ---------------- VIDEO PLAYER ----------------
-def play_video(url):
-    st.markdown(f"""
-    <video width="100%" autoplay loop muted controls>
-        <source src="{url}" type="video/mp4">
-        Your browser does not support the video tag.
-    </video>
-    """, unsafe_allow_html=True)
+# ---------------- HELPERS ----------------
+def play_video(url: str):
+    st.markdown(
+        f"""
+        <video width="100%" autoplay loop muted controls>
+            <source src="{url}" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+        """,
+        unsafe_allow_html=True,
+    )
 
-# ---------------- TOP VIDEOS GRID ----------------
-col1, col2, col3 = st.columns(3)
+def show_pdf(url: str, height: int = 800):
+    # requires Streamlit with st.pdf support; otherwise replace with iframe
+    st.pdf(url, height=height)
+
+# ---------------- TOP GRID (3 VIDEOS + 1 PDF) ----------------
+col1, col2, col3, col4 = st.columns(4)
 
 with col1:
     st.subheader("Protocols")
@@ -124,35 +132,48 @@ with col3:
     st.subheader("Vision System")
     play_video(VIDEO_3)
 
+with col4:
+    st.subheader("Documentation PDF")
+    show_pdf(PDF_1, height=300)  # small preview in the tile
+
 st.markdown("---")
 
 # ---------------- SIDEBAR BUTTONS ----------------
 st.sidebar.title("AI Projects")
 
 projects = {
-    "AI Vision Inspection": VIDEO_1,
-    "PLC + AI Integration": VIDEO_2,
-    "Industrial Vision ROI": VIDEO_3,
-    "Smart Factory AI": VIDEO_4,
-    "Coming Soon 🚧": VIDEO_1,
-    "Future Innovation 🚀": VIDEO_2
+    "AI Vision Inspection": ("video", VIDEO_1),
+    "PLC + AI Integration": ("video", VIDEO_2),
+    "Industrial Vision ROI": ("video", VIDEO_3),
+    "Documentation PDF": ("pdf", PDF_1),
+    "Smart Factory AI": ("video", VIDEO_4),
 }
 
 # Default selection
 if "selected_project" not in st.session_state:
     st.session_state.selected_project = list(projects.keys())[0]
 
-# Fixed-size buttons
-for project in projects:
-    if st.sidebar.button(project):
-        st.session_state.selected_project = project
+# Fixed-size buttons (CSS above ensures same width/height)
+for project_name in projects.keys():
+    if st.sidebar.button(project_name):
+        st.session_state.selected_project = project_name
 
 # ---------------- MAIN DISPLAY ----------------
-st.subheader(st.session_state.selected_project)
-play_video(projects[st.session_state.selected_project])
+proj_name = st.session_state.selected_project
+proj_type, proj_source = projects[proj_name]
 
-st.write("""
+st.subheader(proj_name)
+
+if proj_type == "video":
+    play_video(proj_source)
+else:
+    # full‑size PDF view when the PDF project is selected
+    show_pdf(proj_source, height=800)
+
+st.write(
+    """
 **Project Overview:**  
 This AI solution demonstrates real-world industrial automation using  
 computer vision, PLC integration, and intelligent analytics.
-""")
+"""
+)
