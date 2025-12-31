@@ -1,4 +1,3 @@
-
 import streamlit as st
 
 # ---------------- PAGE CONFIG ----------------
@@ -7,7 +6,7 @@ st.set_page_config(
     layout="wide"
 )
 
-# ---------------- CSS (THEME + STARS + BUTTON SIZE) ----------------l
+# ---------------- CSS (THEME + STARS + BUTTON SIZE) ----------------
 st.markdown("""
 <style>
 
@@ -99,8 +98,8 @@ BASE = "https://raw.githubusercontent.com/Harjeetsinghengg/Projects/main"
 VIDEO_1 = f"{BASE}/protocol.mp4"
 VIDEO_2 = f"{BASE}/OPC.mp4"
 VIDEO_3 = f"{BASE}/Template Matching.mp4"
-VIDEO_4 = f"{BASE}/video4.mp4"      # still a video if you want it
-PDF_1   = f"{BASE}/documentation.pdf"  # <- put your real PDF path here
+VIDEO_4 = f"{BASE}/video4.mp4"      # optional extra video
+PDF_1   = f"{BASE}/documentation.pdf"  # <- make sure this exists in the repo
 
 # ---------------- HELPERS ----------------
 def play_video(url: str):
@@ -115,14 +114,19 @@ def play_video(url: str):
     )
 
 def show_pdf(url: str, height: int = 800):
-    # requires Streamlit with st.pdf support; otherwise replace with iframe
-    st.pdf(url, height=height)
+    # Embed a public PDF URL in an iframe
+    iframe_html = f"""
+        <iframe src="{url}" width="100%" height="{height}"
+                style="border:none;">
+        </iframe>
+    """
+    st.markdown(iframe_html, unsafe_allow_html=True)
 
 # ---------------- TOP GRID (3 VIDEOS + 1 PDF) ----------------
 col1, col2, col3, col4 = st.columns(4)
 
 with col1:
-    st.subheader("Protocols.")
+    st.subheader("Protocols")
     play_video(VIDEO_1)
 
 with col2:
@@ -142,6 +146,7 @@ st.markdown("---")
 # ---------------- SIDEBAR BUTTONS ----------------
 st.sidebar.title("AI Projects")
 
+# type: "video" or "pdf"
 projects = {
     "AI Vision Inspection": ("video", VIDEO_1),
     "PLC + AI Integration": ("video", VIDEO_2),
@@ -154,7 +159,7 @@ projects = {
 if "selected_project" not in st.session_state:
     st.session_state.selected_project = list(projects.keys())[0]
 
-# Fixed-size buttons (CSS above ensures same width/height)
+# Fixed-size buttons (CSS ensures same width/height)
 for project_name in projects.keys():
     if st.sidebar.button(project_name):
         st.session_state.selected_project = project_name
@@ -168,7 +173,6 @@ st.subheader(proj_name)
 if proj_type == "video":
     play_video(proj_source)
 else:
-    # full‑size PDF view when the PDF project is selected
     show_pdf(proj_source, height=800)
 
 st.write(
