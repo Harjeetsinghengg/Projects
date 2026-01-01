@@ -182,4 +182,6 @@ This section showcases the different projects I have been working on.
 - **Problem Solving**
 - **Automation & Efficiency**
 - **Collaboration & Growth**
+
+harjeetsinghengg@gmail.com
 """)
