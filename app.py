@@ -1,4 +1,7 @@
 import streamlit as st
+import requests
+import tempfile
+import os
 
 # -------------------------------------------------
 # PAGE CONFIG
@@ -14,100 +17,42 @@ st.set_page_config(
 st.markdown("""
 <style>
 
-/* ================= GENERAL ================= */
 body {
     background: linear-gradient(135deg, #FF9933, #001F54);
     color: white;
 }
 
-/* ================= SIDEBAR ================= */
 [data-testid="stSidebar"] {
     background: linear-gradient(180deg, #FF9933, #001F54);
     padding-top: 2rem;
     width: 280px !important;
 }
 
-/* ================= HEADINGS ================= */
 h1, h2, h3 {
     color: #FFD700;
 }
 
-/* ================= SIDEBAR BUTTONS ================= */
 .stButton > button {
     width: 100% !important;
     min-width: 240px !important;
     max-width: 240px !important;
     height: 42px !important;
-
     background-color: #FFD700;
     color: #001F54;
-
     border-radius: 10px;
     font-weight: 600;
     font-size: 15px;
-
     display: flex !important;
     align-items: center !important;
     justify-content: center !important;
-
-    text-align: center;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-
     margin-bottom: 14px;
-    box-sizing: border-box;
 }
 
 .stButton > button:hover {
     background-color: #FFA500;
     color: white;
 }
-
-/* ================= FLOATING STARS ================= */
-.star-layer {
-    position: fixed;
-    top: 0;
-    right: 0;
-    width: 70%;
-    height: 100%;
-    pointer-events: none;
-    z-index: 0;
-}
-
-.star {
-    position: absolute;
-    width: 28px;
-    height: 28px;
-    background: rgba(255, 204, 102, 0.35);
-    clip-path: polygon(
-        50% 0%, 61% 35%, 98% 35%, 68% 57%,
-        79% 91%, 50% 70%, 21% 91%, 32% 57%,
-        2% 35%, 39% 35%
-    );
-    animation: floatStar 20s linear infinite;
-}
-
-@keyframes floatStar {
-    0% { transform: translateY(110vh) rotate(0deg); opacity: 0; }
-    20% { opacity: 0.6; }
-    100% { transform: translateY(-10vh) rotate(360deg); opacity: 0; }
-}
 </style>
-""", unsafe_allow_html=True)
-
-# -------------------------------------------------
-# BACKGROUND STARS
-# -------------------------------------------------
-st.markdown("""
-<div class="star-layer">
-    <div class="star" style="left:10%; animation-delay:0s;"></div>
-    <div class="star" style="left:25%; animation-delay:4s;"></div>
-    <div class="star" style="left:40%; animation-delay:8s;"></div>
-    <div class="star" style="left:55%; animation-delay:12s;"></div>
-    <div class="star" style="left:70%; animation-delay:16s;"></div>
-    <div class="star" style="left:85%; animation-delay:20s;"></div>
-</div>
 """, unsafe_allow_html=True)
 
 # -------------------------------------------------
@@ -126,8 +71,7 @@ VIDEO_3 = f"{BASE}/Template%20Matching.mp4"
 VIDEO_4 = f"{BASE}/video4.mp4"
 VIDEO_5 = f"{BASE}/video5.mp4"
 VIDEO_6 = f"{BASE}/video6.mp4"
-
-PDF_1 = f"{BASE}/Documents/Dashboard.pdf"
+PDF_1   = f"{BASE}/Documents/Dashboard.pdf"
 
 # -------------------------------------------------
 # HELPERS
@@ -141,7 +85,20 @@ def play_video(url, height=260):
 
 
 def show_pdf(url):
-    st.pdf(url)
+    """Download PDF and display it safely in Streamlit"""
+    try:
+        response = requests.get(url)
+        response.raise_for_status()
+
+        with tempfile.NamedTemporaryFile(delete=False, suffix=".pdf") as f:
+            f.write(response.content)
+            temp_path = f.name
+
+        st.pdf(temp_path)
+
+    except Exception as e:
+        st.error("❌ Failed to load PDF")
+        st.exception(e)
 
 
 # -------------------------------------------------
@@ -180,7 +137,7 @@ with col6:
 st.markdown("---")
 
 # -------------------------------------------------
-# SIDEBAR NAVIGATION
+# SIDEBAR
 # -------------------------------------------------
 st.sidebar.title("AI Projects")
 
@@ -202,7 +159,7 @@ for name in projects:
         st.session_state.selected_project = name
 
 # -------------------------------------------------
-# MAIN DISPLAY
+# MAIN CONTENT
 # -------------------------------------------------
 proj_name = st.session_state.selected_project
 proj_type, proj_src = projects[proj_name]
@@ -215,12 +172,11 @@ else:
     show_pdf(proj_src)
 
 # -------------------------------------------------
-# DESCRIPTION
+# FOOTER
 # -------------------------------------------------
 st.markdown("""
 ### Project Overview
-
-This section showcases the different projects I have been working on in my spare time.
+This section showcases the different projects I have been working on.
 
 ### My Technical Values
 - **Continuous Learning**
