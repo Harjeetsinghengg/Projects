@@ -24,7 +24,7 @@ body {
 [data-testid="stSidebar"] {
     background: linear-gradient(180deg, #FF9933, #001F54);
     padding-top: 2rem;
-    width: 560px !important; /* doubled width */
+    width: 260px !important;
 }
 
 /* ================= HEADINGS ================= */
@@ -35,21 +35,25 @@ h1, h2, h3 {
 /* ================= SIDEBAR BUTTONS ================= */
 .stButton > button {
     width: 100% !important;
-    height: 35px !important;   /* half height */
-    font-size: 18px !important;
-    font-weight: 600;
-    border-radius: 10px;
+    height: 56px !important;
 
     background-color: #FFD700;
     color: #001F54;
+
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 15px;
 
     display: flex !important;
     align-items: center !important;
     justify-content: center !important;
 
-    margin-bottom: 16px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+
+    margin-bottom: 12px;
     box-sizing: border-box;
-    text-align: center;
 }
 
 .stButton > button:hover {
@@ -117,14 +121,9 @@ VIDEO_1 = f"{BASE}/protocol.mp4"
 VIDEO_2 = f"{BASE}/OPC.mp4"
 VIDEO_3 = f"{BASE}/Template%20Matching.mp4"
 VIDEO_4 = f"{BASE}/video4.mp4"
-VIDEO_5 = f"{BASE}/video5.mp4"
-VIDEO_6 = f"{BASE}/video6.mp4"
+VIDEO_5 = f"{BASE}/video5.mp4"   # new video 5
+VIDEO_6 = f"{BASE}/video6.mp4"   # new video 6
 PDF_1   = f"{BASE}/Documents/Dashboard.pdf"
-PDF_2   = f"{BASE}/Documents/Report2.pdf"
-PDF_3   = f"{BASE}/Documents/Report3.pdf"
-PDF_4   = f"{BASE}/Documents/Report4.pdf"
-PDF_5   = f"{BASE}/Documents/Report5.pdf"
-PDF_6   = f"{BASE}/Documents/Report6.pdf"
 
 # -------------------------------------------------
 # HELPERS
@@ -137,7 +136,7 @@ def play_video(url, height=260):
     """, unsafe_allow_html=True)
 
 
-def show_pdf(url, height=850):
+def show_pdf(url, height=800):
     viewer = f"https://docs.google.com/gview?url={url}&embedded=true"
     st.markdown(
         f"""<iframe src="{viewer}" width="100%" height="{height}" style="border:none;"></iframe>""",
@@ -164,7 +163,7 @@ with col3:
 st.markdown("---")
 
 # -------------------------------------------------
-# NEXT 3 VIDEOS
+# NEXT 3 VIDEOS (NEW ROW)
 # -------------------------------------------------
 col4, col5, col6 = st.columns(3)
 
@@ -185,21 +184,21 @@ st.markdown("---")
 # -------------------------------------------------
 # SIDEBAR BUTTONS
 # -------------------------------------------------
-st.sidebar.title("📂 Projects / PDFs")
+st.sidebar.title("AI Projects")
 
 projects = {
-    "Dashboard": ("pdf", PDF_1),
-    "Report 2": ("pdf", PDF_2),
-    "Report 3": ("pdf", PDF_3),
-    "Report 4": ("pdf", PDF_4),
-    "Report 5": ("pdf", PDF_5),
-    "Report 6": ("pdf", PDF_6),
+    "Industrial Protocol": ("video", VIDEO_1),
+    "PLC + OPC Integration": ("video", VIDEO_2),
+    "Industrial Vision": ("video", VIDEO_3),
+    "Dashboard Grafana": ("pdf", PDF_1),
+    "Smart Factory AI / ML": ("video", VIDEO_4),
+    "Predictive Maintenance": ("video", VIDEO_5),
+    "Quality Control": ("video", VIDEO_6),
 }
 
 if "selected_project" not in st.session_state:
     st.session_state.selected_project = list(projects.keys())[0]
 
-# All 6 sidebar buttons, same size, half height, double width
 for name in projects:
     if st.sidebar.button(name):
         st.session_state.selected_project = name
