@@ -24,7 +24,7 @@ body {
 [data-testid="stSidebar"] {
     background: linear-gradient(180deg, #FF9933, #001F54);
     padding-top: 2rem;
-    width: 280px !important;
+    width: 560px !important; /* doubled width */
 }
 
 /* ================= HEADINGS ================= */
@@ -35,7 +35,7 @@ h1, h2, h3 {
 /* ================= SIDEBAR BUTTONS ================= */
 .stButton > button {
     width: 100% !important;
-    height: 70px !important;   /* Increased height for bigger buttons */
+    height: 35px !important;   /* half height */
     font-size: 18px !important;
     font-weight: 600;
     border-radius: 10px;
@@ -173,7 +173,7 @@ with col4:
     play_video(VIDEO_4)
 
 with col5:
-    st.subheader("Maintenance")
+    st.subheader("Predictive Maintenance")
     play_video(VIDEO_5)
 
 with col6:
@@ -199,7 +199,7 @@ projects = {
 if "selected_project" not in st.session_state:
     st.session_state.selected_project = list(projects.keys())[0]
 
-# Create all 6 sidebar buttons with same large size
+# All 6 sidebar buttons, same size, half height, double width
 for name in projects:
     if st.sidebar.button(name):
         st.session_state.selected_project = name
