@@ -1,7 +1,5 @@
 import streamlit as st
-import requests
-import tempfile
-import os
+import urllib.parse
 
 # -------------------------------------------------
 # PAGE CONFIG
@@ -84,22 +82,21 @@ def play_video(url, height=260):
     """, unsafe_allow_html=True)
 
 
-def show_pdf(url):
-    """Download PDF and display it safely in Streamlit"""
-    try:
-        response = requests.get(url)
-        response.raise_for_status()
+def show_pdf(url, height=900):
+    encoded_url = urllib.parse.quote(url, safe="")
+    viewer = f"https://docs.google.com/gview?url={encoded_url}&embedded=true"
 
-        with tempfile.NamedTemporaryFile(delete=False, suffix=".pdf") as f:
-            f.write(response.content)
-            temp_path = f.name
-
-        st.pdf(temp_path)
-
-    except Exception as e:
-        st.error("❌ Failed to load PDF")
-        st.exception(e)
-
+    st.markdown(
+        f"""
+        <iframe 
+            src="{viewer}" 
+            width="100%" 
+            height="{height}" 
+            style="border:none;">
+        </iframe>
+        """,
+        unsafe_allow_html=True
+    )
 
 # -------------------------------------------------
 # VIDEO GRID
