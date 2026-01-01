@@ -121,6 +121,8 @@ VIDEO_1 = f"{BASE}/protocol.mp4"
 VIDEO_2 = f"{BASE}/OPC.mp4"
 VIDEO_3 = f"{BASE}/Template%20Matching.mp4"
 VIDEO_4 = f"{BASE}/video4.mp4"
+VIDEO_5 = f"{BASE}/video5.mp4"   # new video 5
+VIDEO_6 = f"{BASE}/video6.mp4"   # new video 6
 PDF_1   = f"{BASE}/Documents/Dashboard.pdf"
 
 # -------------------------------------------------
@@ -161,6 +163,25 @@ with col3:
 st.markdown("---")
 
 # -------------------------------------------------
+# NEXT 3 VIDEOS (NEW ROW)
+# -------------------------------------------------
+col4, col5, col6 = st.columns(3)
+
+with col4:
+    st.subheader("Smart Factory AI")
+    play_video(VIDEO_4)
+
+with col5:
+    st.subheader("Predictive Maintenance")
+    play_video(VIDEO_5)
+
+with col6:
+    st.subheader("Quality Control")
+    play_video(VIDEO_6)
+
+st.markdown("---")
+
+# -------------------------------------------------
 # SIDEBAR BUTTONS
 # -------------------------------------------------
 st.sidebar.title("AI Projects")
@@ -171,6 +192,8 @@ projects = {
     "Industrial Vision": ("video", VIDEO_3),
     "Dashboard Grafana": ("pdf", PDF_1),
     "Smart Factory AI / ML": ("video", VIDEO_4),
+    "Predictive Maintenance": ("video", VIDEO_5),
+    "Quality Control": ("video", VIDEO_6),
 }
 
 if "selected_project" not in st.session_state:
@@ -213,6 +236,3 @@ I am always eager to learn, explore, and grow with new technological advancement
 
 **Collaboration & Growth** – Learning from others and sharing knowledge to grow together.
 """)
-
-
-
