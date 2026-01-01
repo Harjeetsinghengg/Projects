@@ -37,30 +37,23 @@ h1, h2, h3 {
     width: 100% !important;
     min-width: 240px !important;
     max-width: 240px !important;
-
     height: 42px !important;
-
     background-color: #FFD700;
     color: #001F54;
-
     border-radius: 10px;
     font-weight: 600;
     font-size: 15px;
-
     display: flex !important;
     align-items: center !important;
     justify-content: center !important;
-
     text-align: center;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
-
     margin-bottom: 14px;
     box-sizing: border-box;
 }
 
-/* Hover effect */
 .stButton > button:hover {
     background-color: #FFA500;
     color: white;
@@ -141,15 +134,15 @@ def play_video(url, height=260):
     """, unsafe_allow_html=True)
 
 
-def show_pdf(url, height=800):
-    viewer = f"https://docs.google.com/gview?url={url}&embedded=true"
-    st.markdown(
-        f"""<iframe src="{viewer}" width="100%" height="{height}" style="border:none;"></iframe>""",
-        unsafe_allow_html=True
+def show_pdf(url, height=900):
+    st.components.v1.iframe(
+        src=url,
+        height=height,
+        scrolling=True
     )
 
 # -------------------------------------------------
-# VIDEOS GRID
+# VIDEO GRID
 # -------------------------------------------------
 col1, col2, col3 = st.columns(3)
 
@@ -184,7 +177,7 @@ with col6:
 st.markdown("---")
 
 # -------------------------------------------------
-# SIDEBAR BUTTONS
+# SIDEBAR
 # -------------------------------------------------
 st.sidebar.title("AI Projects")
 
@@ -206,7 +199,7 @@ for name in projects:
         st.session_state.selected_project = name
 
 # -------------------------------------------------
-# MAIN CONTENT
+# MAIN DISPLAY
 # -------------------------------------------------
 proj_name = st.session_state.selected_project
 proj_type, proj_src = projects[proj_name]
@@ -216,12 +209,14 @@ st.subheader(proj_name)
 if proj_type == "video":
     play_video(proj_src, height=420)
 else:
-    show_pdf(proj_src, height=850)
+    show_pdf(proj_src, height=900)
 
+# -------------------------------------------------
+# FOOTER
+# -------------------------------------------------
 st.markdown("""
 ### Project Overview
-
-This section showcases the different projects I have been working on in my spare time.  
+This section showcases the different projects I have been working on in my spare time.
 
 ### My Technical Values
 - **Continuous Learning**
