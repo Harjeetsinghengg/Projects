@@ -194,32 +194,72 @@ else:
     show_pdf(proj_src, height=850)
 
 st.markdown("""
-## **Project Overview**
+<style>
+.value-row {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    margin-bottom: 18px;
+}
 
-This section showcases the different projects I have been working on in my spare time.  
-I am always eager to learn, explore, and grow with new technological advancements while building practical, real-world solutions.
+.value-icon {
+    color: #00BFFF;
+    font-size: 18px;
+    margin-top: 4px;
+}
 
----
+.value-title {
+    font-weight: 700;
+    font-size: 20px;
+    color: white;
+}
 
-## **My Technical Values**
+.value-text {
+    color: #e0e0e0;
+    font-size: 16px;
+}
+</style>
 
-### 🔹 **Continuous Learning**
-Constantly upgrading my skills to stay aligned with emerging technologies.
+<div class="value-row">
+    <div class="value-icon">◆</div>
+    <div>
+        <span class="value-title">Innovation & Creativity</span> – 
+        <span class="value-text">Finding smarter, efficient, and scalable solutions to real-world problems.</span>
+    </div>
+</div>
 
-### 🔹 **Innovation & Creativity**
-Finding smarter, efficient, and scalable solutions to real-world problems.
+<div class="value-row">
+    <div class="value-icon">◆</div>
+    <div>
+        <span class="value-title">Quality & Reliability</span> – 
+        <span class="value-text">Writing clean, maintainable, and well-structured code.</span>
+    </div>
+</div>
 
-### 🔹 **Quality & Reliability**
-Writing clean, maintainable, and well-structured code.
+<div class="value-row">
+    <div class="value-icon">◆</div>
+    <div>
+        <span class="value-title">Problem Solving</span> – 
+        <span class="value-text">Strong analytical thinking to troubleshoot and optimize systems.</span>
+    </div>
+</div>
 
-### 🔹 **Problem Solving**
-Strong analytical thinking to troubleshoot and optimize systems.
+<div class="value-row">
+    <div class="value-icon">◆</div>
+    <div>
+        <span class="value-title">Automation & Efficiency</span> – 
+        <span class="value-text">Leveraging AI, ML, and automation to improve productivity and performance.</span>
+    </div>
+</div>
 
-### 🔹 **Automation & Efficiency**
-Leveraging AI, ML, and automation to improve productivity and performance.
+<div class="value-row">
+    <div class="value-icon">◆</div>
+    <div>
+        <span class="value-title">Collaboration & Growth</span> – 
+        <span class="value-text">Learning from others and sharing knowledge to grow together.</span>
+    </div>
+</div>
+""", unsafe_allow_html=True)
 
-### 🔹 **Collaboration & Growth**
-Learning from others and sharing knowledge to grow together.
-""")
 
 
