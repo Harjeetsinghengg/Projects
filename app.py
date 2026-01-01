@@ -38,18 +38,23 @@ h1, h2, h3 {
     min-width: 240px !important;
     max-width: 240px !important;
     height: 42px !important;
+
     background-color: #FFD700;
     color: #001F54;
+
     border-radius: 10px;
     font-weight: 600;
     font-size: 15px;
+
     display: flex !important;
     align-items: center !important;
     justify-content: center !important;
+
     text-align: center;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
+
     margin-bottom: 14px;
     box-sizing: border-box;
 }
@@ -92,7 +97,7 @@ h1, h2, h3 {
 """, unsafe_allow_html=True)
 
 # -------------------------------------------------
-# STARS
+# BACKGROUND STARS
 # -------------------------------------------------
 st.markdown("""
 <div class="star-layer">
@@ -121,7 +126,8 @@ VIDEO_3 = f"{BASE}/Template%20Matching.mp4"
 VIDEO_4 = f"{BASE}/video4.mp4"
 VIDEO_5 = f"{BASE}/video5.mp4"
 VIDEO_6 = f"{BASE}/video6.mp4"
-PDF_1   = f"{BASE}/Documents/Dashboard.pdf"
+
+PDF_1 = f"{BASE}/Documents/Dashboard.pdf"
 
 # -------------------------------------------------
 # HELPERS
@@ -134,12 +140,9 @@ def play_video(url, height=260):
     """, unsafe_allow_html=True)
 
 
-def show_pdf(url, height=900):
-    st.components.v1.iframe(
-        src=url,
-        height=height,
-        scrolling=True
-    )
+def show_pdf(url):
+    st.pdf(url)
+
 
 # -------------------------------------------------
 # VIDEO GRID
@@ -177,7 +180,7 @@ with col6:
 st.markdown("---")
 
 # -------------------------------------------------
-# SIDEBAR
+# SIDEBAR NAVIGATION
 # -------------------------------------------------
 st.sidebar.title("AI Projects")
 
@@ -209,13 +212,14 @@ st.subheader(proj_name)
 if proj_type == "video":
     play_video(proj_src, height=420)
 else:
-    show_pdf(proj_src, height=900)
+    show_pdf(proj_src)
 
 # -------------------------------------------------
-# FOOTER
+# DESCRIPTION
 # -------------------------------------------------
 st.markdown("""
 ### Project Overview
+
 This section showcases the different projects I have been working on in my spare time.
 
 ### My Technical Values
