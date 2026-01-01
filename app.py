@@ -195,5 +195,15 @@ else:
 
 st.write("""
 **Project Overview:**  
-This section dynamically updates based on the selected project while keeping the top three showcase videos unchanged.
+
+This section showcases the different projects I have been working on in my spare time. I am always eager to learn, explore, and grow with new technological advancements while building practical, real-world solutions.
+
+My Technical Values
+
+Continuous Learning – Constantly upgrading my skills to stay aligned with emerging technologies.
+Innovation & Creativity – Finding smarter, efficient, and scalable solutions to real-world problems.
+Quality & Reliability – Writing clean, maintainable, and well-structured code.
+Problem Solving – Strong analytical thinking to troubleshoot and optimize systems.
+Automation & Efficiency – Leveraging AI, ML, and automation to improve productivity and performance.
+Collaboration & Growth – Learning from others and sharing knowledge to grow together.
 """)
