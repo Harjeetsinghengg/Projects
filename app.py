@@ -56,7 +56,7 @@ h1, h2, h3 {
 # -------------------------------------------------
 # TITLE
 # -------------------------------------------------
-st.title("🚀 PLC + AI Solutions Showcase")
+st.title("🚀 PLC + SCADA + IoT + Dashboards + AI + Industry 4.0 Solutions Showcase")
 
 # -------------------------------------------------
 # FILE PATHS
