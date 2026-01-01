@@ -24,7 +24,7 @@ body {
 [data-testid="stSidebar"] {
     background: linear-gradient(180deg, #FF9933, #001F54);
     padding-top: 2rem;
-    width: 260px !important;
+    width: 280px !important;
 }
 
 /* ================= HEADINGS ================= */
@@ -35,12 +35,15 @@ h1, h2, h3 {
 /* ================= SIDEBAR BUTTONS ================= */
 .stButton > button {
     width: 100% !important;
-    height: 56px !important;
+    min-width: 240px !important;
+    max-width: 240px !important;
+
+    height: 42px !important;
 
     background-color: #FFD700;
     color: #001F54;
 
-    border-radius: 8px;
+    border-radius: 10px;
     font-weight: 600;
     font-size: 15px;
 
@@ -48,14 +51,16 @@ h1, h2, h3 {
     align-items: center !important;
     justify-content: center !important;
 
+    text-align: center;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
 
-    margin-bottom: 12px;
+    margin-bottom: 14px;
     box-sizing: border-box;
 }
 
+/* Hover effect */
 .stButton > button:hover {
     background-color: #FFA500;
     color: white;
@@ -121,8 +126,8 @@ VIDEO_1 = f"{BASE}/protocol.mp4"
 VIDEO_2 = f"{BASE}/OPC.mp4"
 VIDEO_3 = f"{BASE}/Template%20Matching.mp4"
 VIDEO_4 = f"{BASE}/video4.mp4"
-VIDEO_5 = f"{BASE}/video5.mp4"   # new video 5
-VIDEO_6 = f"{BASE}/video6.mp4"   # new video 6
+VIDEO_5 = f"{BASE}/video5.mp4"
+VIDEO_6 = f"{BASE}/video6.mp4"
 PDF_1   = f"{BASE}/Documents/Dashboard.pdf"
 
 # -------------------------------------------------
@@ -144,7 +149,7 @@ def show_pdf(url, height=800):
     )
 
 # -------------------------------------------------
-# TOP 3 VIDEOS
+# VIDEOS GRID
 # -------------------------------------------------
 col1, col2, col3 = st.columns(3)
 
@@ -162,9 +167,6 @@ with col3:
 
 st.markdown("---")
 
-# -------------------------------------------------
-# NEXT 3 VIDEOS (NEW ROW)
-# -------------------------------------------------
 col4, col5, col6 = st.columns(3)
 
 with col4:
@@ -220,19 +222,12 @@ st.markdown("""
 ### Project Overview
 
 This section showcases the different projects I have been working on in my spare time.  
-I am always eager to learn, explore, and grow with new technological advancements while building practical, real-world solutions.
 
 ### My Technical Values
-
-**Continuous Learning** – Constantly upgrading my skills to stay aligned with emerging technologies.
-
-**Innovation & Creativity** – Finding smarter, efficient, and scalable solutions to real-world problems.
-
-**Quality & Reliability** – Writing clean, maintainable, and well-structured code.
-
-**Problem Solving** – Strong analytical thinking to troubleshoot and optimize systems.
-
-**Automation & Efficiency** – Leveraging AI, ML, and automation to improve productivity and performance.
-
-**Collaboration & Growth** – Learning from others and sharing knowledge to grow together.
+- **Continuous Learning**
+- **Innovation & Creativity**
+- **Quality & Reliability**
+- **Problem Solving**
+- **Automation & Efficiency**
+- **Collaboration & Growth**
 """)
