@@ -193,18 +193,24 @@ if proj_type == "video":
 else:
     show_pdf(proj_src, height=850)
 
-st.write("""
-**Project Overview:**  
+st.markdown("""
+### **Project Overview**
 
-This section showcases the different projects I have been working on in my spare time. I am always eager to learn, explore, and grow with new technological advancements while building practical, real-world solutions.
+This section showcases the different projects I have been working on in my spare time.  
+I am always eager to learn, explore, and grow with new technological advancements while building practical, real-world solutions.
 
-My Technical Values
+### **My Technical Values**
 
 <b>Continuous Learning</b> – Constantly upgrading my skills to stay aligned with emerging technologies.<br><br>
-<b>Innovation & Creativity</b> – Finding smarter, efficient, and scalable solutions to real-world problems.<br><br>
-<b>Quality & Reliability</b> – Writing clean, maintainable, and well-structured code.<br><br>
-<b>Problem Solving</b> – Strong analytical thinking to troubleshoot and optimize systems.<br><br>
-<b>Automation & Efficiency</b> – Leveraging AI, ML, and automation to improve productivity and performance.<br><br>
-<b>Collaboration & Growth</b> – Learning from others and sharing knowledge to grow together.
 
-""")
+<b>Innovation & Creativity</b> – Finding smarter, efficient, and scalable solutions to real-world problems.<br><br>
+
+<b>Quality & Reliability</b> – Writing clean, maintainable, and well-structured code.<br><br>
+
+<b>Problem Solving</b> – Strong analytical thinking to troubleshoot and optimize systems.<br><br>
+
+<b>Automation & Efficiency</b> – Leveraging AI, ML, and automation to improve productivity and performance.<br><br>
+
+<b>Collaboration & Growth</b> – Learning from others and sharing knowledge to grow together.
+""", unsafe_allow_html=True)
+
