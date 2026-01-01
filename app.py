@@ -200,15 +200,11 @@ This section showcases the different projects I have been working on in my spare
 
 My Technical Values
 
-<b>Continuous Learning</b> – Constantly upgrading my skills to stay aligned with emerging technologies.
+<b>Continuous Learning</b> – Constantly upgrading my skills to stay aligned with emerging technologies.<br><br>
+<b>Innovation & Creativity</b> – Finding smarter, efficient, and scalable solutions to real-world problems.<br><br>
+<b>Quality & Reliability</b> – Writing clean, maintainable, and well-structured code.<br><br>
+<b>Problem Solving</b> – Strong analytical thinking to troubleshoot and optimize systems.<br><br>
+<b>Automation & Efficiency</b> – Leveraging AI, ML, and automation to improve productivity and performance.<br><br>
+<b>Collaboration & Growth</b> – Learning from others and sharing knowledge to grow together.
 
-**Innovation & Creativity** – Finding smarter, efficient, and scalable solutions to real-world problems.
-
-**Quality & Reliability** – Writing clean, maintainable, and well-structured code.
-
-**Problem Solving** – Strong analytical thinking to troubleshoot and optimize systems.
-
-**Automation & Efficiency** – Leveraging AI, ML, and automation to improve productivity and performance.
-
-**Collaboration & Growth** – Learning from others and sharing knowledge to grow together.
 """)
