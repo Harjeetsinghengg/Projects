@@ -70,6 +70,7 @@ VIDEO_4 = f"{BASE}/AI Development Cycle.mp4"
 VIDEO_5 = f"{BASE}/video5.mp4"
 VIDEO_6 = f"{BASE}/video6.mp4"
 PDF_1   = f"{BASE}/Documents/Dashboard.pdf"
+PDF_2   = f"{BASE}/Documents/Flask App.pdf"
 
 # -------------------------------------------------
 # HELPERS
@@ -139,7 +140,7 @@ st.markdown("---")
 st.sidebar.title("AI Projects")
 
 projects = {
-    "Industrial Protocol": ("video", VIDEO_1),
+    "Flask Application": ("video", PDF_2),
     "PLC + OPC Integration": ("video", VIDEO_2),
     "Industrial Vision": ("video", VIDEO_3),
     "Dashboard Grafana": ("pdf", PDF_1),
