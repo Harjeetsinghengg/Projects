@@ -124,7 +124,7 @@ with col4:
     play_video(VIDEO_4)
 
 with col5:
-    st.subheader("Predictive Maintenance")
+    st.subheader("Maintenance")
     play_video(VIDEO_5)
 
 with col6:
