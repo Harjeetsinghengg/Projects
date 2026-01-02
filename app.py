@@ -68,7 +68,7 @@ VIDEO_2 = f"{BASE}/OPC.mp4"
 VIDEO_3 = f"{BASE}/Template%20Matching.mp4"
 VIDEO_4 = f"{BASE}/AI Development Cycle.mp4"
 VIDEO_5 = f"{BASE}/AI H2 Project.mp4"
-VIDEO_6 = f"{BASE}/video6.mp4"
+VIDEO_6 = f"{BASE}/n8n AI Agent.mp4"
 PDF_1   = f"{BASE}/Documents/Dashboard.pdf"
 PDF_2   = f"{BASE}/Documents/Flask App.pdf"
 
