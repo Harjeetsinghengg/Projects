@@ -109,7 +109,7 @@ with col1:
     play_video(VIDEO_1)
 
 with col2:
-    st.subheader("OPC Integration")
+    st.subheader("PLC-OPC Integration")
     play_video(VIDEO_2)
 
 with col3:
@@ -129,7 +129,7 @@ with col5:
     play_video(VIDEO_5)
 
 with col6:
-    st.subheader("Quality Control")
+    st.subheader("n8n AI Agent")
     play_video(VIDEO_6)
 
 st.markdown("---")
